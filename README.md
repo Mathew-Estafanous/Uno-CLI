@@ -1,2 +1,2 @@
 # Uno-CLI
-Simple &amp; fun Uni game that you can play on the command line.
+Simple and fun Uno game that you can play on the command line.
