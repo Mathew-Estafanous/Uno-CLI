@@ -1,2 +1,2 @@
-# Uno-CLI
-Simple &amp; fun Uni game that you can play on the command line.
+# Uno-CLI [Gr.12 Group Final Project]
+A simple & easy to use Uno command line game that lets users easily interact and play the game against other computers.
