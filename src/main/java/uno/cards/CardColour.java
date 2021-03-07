@@ -1,5 +1,10 @@
-package uno;
+package uno.cards;
 
+/**
+ * CardColour defines the variety of different card colours
+ * within the game and also the string literal that will
+ * be used in the command line when displaying colours.
+ */
 public enum CardColour {
     GREEN("\u001B[32m"),
     RED("\u001B[31m"),
@@ -7,6 +12,7 @@ public enum CardColour {
     BLUE("\u001B[34m"),
     WILD("\u001B[35m");
 
+    //The string that contains string literal to chance text colour.
     private final String colour;
     public String getColour() {
         return colour;
