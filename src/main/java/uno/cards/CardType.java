@@ -19,14 +19,16 @@ public enum CardType {
     SWITCH("↺"),
     SKIP("⮿"),
     DRAWTWO("+2"),
-    WILD_DRAWFOUR("+4"),
-    WILD("W");
+    WILD("W"),
+    WILD_DRAWFOUR("+4");
 
     //The string variable that contains the associated display value.
     private final String displayName;
+
     public String getDisplayName() {
         return displayName;
     }
+
     CardType(String displayName) {
         this.displayName = displayName;
     }

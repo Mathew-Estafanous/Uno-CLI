@@ -16,14 +16,6 @@ public class Card {
         this.type = type;
     }
 
-    public CardColour getColour() {
-        return colour;
-    }
-
-    public CardType getType() {
-        return type;
-    }
-
     /**
      * Outlines the card's implementation and how it should change
      * the state of the game whenever it is used.
@@ -33,5 +25,13 @@ public class Card {
     public int useCard() {
         //TODO: Place holder integer until state class is created.
         return 0;
+    }
+
+    public CardColour getColour() {
+        return colour;
+    }
+
+    public CardType getType() {
+        return type;
     }
 }
