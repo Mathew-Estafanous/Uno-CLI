@@ -1,5 +1,7 @@
 package uno.cards;
 
+import uno.State;
+
 /**
  * The Card class is involved in outlining each card's colour,
  * the card type. The card also outlines it's own implementation
@@ -7,8 +9,8 @@ package uno.cards;
  */
 public class Card {
 
-    private final CardColour colour;
-    private final CardType type;
+    private CardColour colour;
+    private CardType type;
 
     //Constructor to create a card with the colour and type.
     public Card(CardColour colour, CardType type) {
@@ -22,9 +24,12 @@ public class Card {
      * @return State - how the game state should be altered from
      * using the card.
      */
-    public int useCard() {
-        //TODO: Place holder integer until state class is created.
-        return 0;
+    public State useCard() {
+        /*
+        Creates a state by using the builder. Since this
+        is a bse card, the card does not modify many special states.
+         */
+        return new State.Builder(colour, type).build();
     }
 
     public CardColour getColour() {
