@@ -9,6 +9,9 @@ import uno.cards.CardType;
  * as state which has all the information to allow the GameManager
  * to correctly alter the state of the game to account for the functionality
  * of the game.
+ * 
+ * This State class can only be generated using the State.Builder which then
+ * generates the immutable state object.
  */
 public class State {
 
