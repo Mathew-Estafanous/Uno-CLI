@@ -3,6 +3,13 @@ package uno;
 import uno.cards.CardColour;
 import uno.cards.CardType;
 
+/**
+ * State class is used to define how the game state will be altered
+ * when a given card is used. When the Card object is used, it returns
+ * as state which has all the information to allow the GameManager
+ * to correctly alter the state of the game to account for the functionality
+ * of the game.
+ */
 public class State {
 
     private final int cardsToDraw;
@@ -11,6 +18,7 @@ public class State {
     private final CardColour topColour;
     private final CardType topType;
 
+    //The constructor is private since it should only be created from the builder.
     private State(int cardsToNextPlayer, int directionOfGame, boolean skipNextPlayer,
                  CardColour topCardColour, CardType topCardType) {
         this.cardsToDraw = cardsToNextPlayer;
@@ -19,7 +27,7 @@ public class State {
         this.topColour = topCardColour;
         this.topType = topCardType;
     }
-
+    
     public int getCardsToDraw() {
         return cardsToDraw;
     }
@@ -28,7 +36,7 @@ public class State {
         return directionOfGame;
     }
 
-    public boolean isSkipNextPlayer() {
+    public boolean shouldSkipNextPlayer() {
         return skipNextPlayer;
     }
 
