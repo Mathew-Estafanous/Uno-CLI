@@ -35,8 +35,10 @@ public enum CardType {
         this.displayName = displayName;
     }
 
-    public static List<CardType> getAllNumericTypes() {
-        return List.of(ZERO, ONE, TWO, THREE, FOUR, FIVE,
-                SIX, SEVEN, EIGHT, NINE);
+    public static CardType[] getAllNumericTypes() {
+        return new CardType[] { 
+          ZERO, ONE, TWO, THREE, FOUR, FIVE,
+                SIX, SEVEN, EIGHT, NINE
+        };
     }
 }

@@ -12,21 +12,10 @@ public class Deck {
     private List<Card> deckOfCards;
 
     public Deck() {
-        createNewDeckOfCards();
+        generateNewDeck();
     }
 
-    private void createNewDeckOfCards() {
-        deckOfCards.addAll(generateAllNumericCards());
-    }
-
-    private List<Card> generateAllNumericCards() {
-        return CardType.getAllNumericTypes().stream()
-            .flatMap(type -> {
-                return CardColour.getAllRegularColours().stream()
-                    .map(colour -> new Card(colour, type))
-                    .collect(Collectors.toList())
-                    .stream();
-            })
-            .collect(Collectors.toList());
+    private void generateNewDeck() {
+        
     }
 }
