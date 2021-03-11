@@ -1,5 +1,7 @@
 package uno.cards;
 
+import java.util.List;
+
 /**
  * CardColour defines the variety of different card colours
  * within the game and also the string literal that will
@@ -20,5 +22,9 @@ public enum CardColour {
 
     CardColour(String colour) {
         this.colour = colour;
+    }
+
+    public static List<CardColour> getAllRegularColours() {
+        return List.of(GREEN, RED, YELLOW, BLUE);
     }
 }

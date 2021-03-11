@@ -1,5 +1,7 @@
 package uno.cards;
 
+import java.util.List;
+
 /**
  * Used to associate a card with its type. Each type has an
  * associated display name that is used when displaying the
@@ -31,5 +33,10 @@ public enum CardType {
 
     CardType(String displayName) {
         this.displayName = displayName;
+    }
+
+    public static List<CardType> getAllNumericTypes() {
+        return List.of(ZERO, ONE, TWO, THREE, FOUR, FIVE,
+                SIX, SEVEN, EIGHT, NINE);
     }
 }
