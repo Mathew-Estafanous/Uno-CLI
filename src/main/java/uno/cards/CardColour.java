@@ -23,8 +23,4 @@ public enum CardColour {
     CardColour(String colour) {
         this.colour = colour;
     }
-
-    public static CardColour[] getAllRegularColours() {
-        return new CardColour[] { GREEN, RED, YELLOW, BLUE };
-    }
 }

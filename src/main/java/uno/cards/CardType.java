@@ -34,11 +34,4 @@ public enum CardType {
     CardType(String displayName) {
         this.displayName = displayName;
     }
-
-    public static CardType[] getAllNumericTypes() {
-        return new CardType[] { 
-          ZERO, ONE, TWO, THREE, FOUR, FIVE,
-                SIX, SEVEN, EIGHT, NINE
-        };
-    }
 }
