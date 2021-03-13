@@ -1,7 +1,5 @@
 package uno.cards;
 
-import java.util.List;
-
 /**
  * Used to associate a card with its type. Each type has an
  * associated display name that is used when displaying the
