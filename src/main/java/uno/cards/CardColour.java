@@ -14,7 +14,7 @@ public enum CardColour {
 
     //The string that contains string literal to chance text colour.
     private final String colour;
-    public String getColour() {
+    public String colour() {
         return colour;
     }
 
