@@ -1,8 +1,5 @@
 package uno;
 
-import uno.cards.CardColour;
-import uno.cards.CardType;
-
 /**
  * State class is used to define how the game state will be altered
  * when a given card is used. When the Card object is used, it returns
@@ -13,44 +10,18 @@ import uno.cards.CardType;
  * This State class can only be generated using the State.Builder which then
  * generates the immutable state object.
  */
-public class State {
+public class Rule {
 
-    private final int cardsToDraw;
-    private final int directionOfGame;
-    private final boolean skipNextPlayer;
-    private final CardColour topColour;
-    private final CardType topType;
+    public final int cardsToDraw;
+    public final int directionOfGame;
+    public final boolean skipNextPlayer;
 
     //The constructor is private since it should only be created from the builder.
-    private State(int cardsToNextPlayer, int directionOfGame, boolean skipNextPlayer,
-                 CardColour topCardColour, CardType topCardType) {
+    private Rule(int cardsToNextPlayer, int directionOfGame, boolean skipNextPlayer) {
         this.cardsToDraw = cardsToNextPlayer;
         this.directionOfGame = directionOfGame;
         this.skipNextPlayer = skipNextPlayer;
-        this.topColour = topCardColour;
-        this.topType = topCardType;
     }
-    
-    public int getCardsToDraw() {
-        return cardsToDraw;
-    }
-
-    public int getDirectionOfGame() {
-        return directionOfGame;
-    }
-
-    public boolean shouldSkipNextPlayer() {
-        return skipNextPlayer;
-    }
-
-    public CardColour getTopColour() {
-        return topColour;
-    }
-
-    public CardType getTopType() {
-        return topType;
-    }
-
 
     /**
      * State Builder is used to create a well defined State object. It uses
@@ -63,19 +34,6 @@ public class State {
         private int nextPlayerDraws = 0;
         private int directionOfGame = 1;
         private boolean skipNextPlayer = false;
-        private final CardColour topColour;
-        private final CardType topType;
-
-        /**
-         * This constructor enforces that there are two required fields when
-         * creating a state object. Other variables are optional.
-         * @param colour
-         * @param type
-         */
-        public Builder(CardColour colour, CardType type) {
-            this.topColour = colour;
-            this.topType = type;
-        }
 
         /**
          * The skip next player will be set to true when this method is
@@ -111,9 +69,9 @@ public class State {
          * @return State - the generated object containing the chosen
          * options.
          */
-        public State build() {
-            return new State(nextPlayerDraws, directionOfGame,
-                    skipNextPlayer, topColour, topType);
+        public Rule build() {
+            return new Rule(nextPlayerDraws, directionOfGame,
+                    skipNextPlayer);
         }
     }
 }

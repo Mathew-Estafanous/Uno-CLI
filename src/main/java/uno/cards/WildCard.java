@@ -1,6 +1,6 @@
 package uno.cards;
 
-import uno.State;
+import uno.Rule;
 
 /**
  * Wild Card is a class that defines its special implementation
@@ -16,14 +16,14 @@ public class WildCard extends Card {
     }
 
     /**
-     * Uses state builder to create a state object that defines that
+     * Uses rule builder to create a rule object that defines that
      * the next player should draw two cards before they play.
-     * @return State - Defined the Wild Card
+     * @return Rule - Defined the Wild Card
      */
     @Override
-    public State useCard() {
+    public Rule useCard() {
         //TODO: Placeholder till wild card can determine the user selected colour.
-        return new State.Builder(getColour(), getType())
+        return new Rule.Builder()
                 .build();
     }
 }

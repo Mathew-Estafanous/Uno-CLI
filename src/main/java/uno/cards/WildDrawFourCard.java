@@ -1,6 +1,6 @@
 package uno.cards;
 
-import uno.State;
+import uno.Rule;
 
 /**
  * Draw Four Wild Cards define the implementation and how
@@ -16,14 +16,14 @@ public class WildDrawFourCard extends Card {
     }
 
     /**
-     * Uses state builder to create a state object that defines that
+     * Uses rule builder to create a rule object that defines that
      * the next player should draw two cards before they play.
-     * @return State - Defined the Wild+4 Card
+     * @return Rule - Defined the Wild+4 Card
      */
     @Override
-    public State useCard() {
+    public Rule useCard() {
         //TODO: Place holder until wild +4 can set the colour depending on user input.
-        return new State.Builder(getColour(), getType())
+        return new Rule.Builder()
                 .nextPlayerDraws(4)
                 .build();
     }

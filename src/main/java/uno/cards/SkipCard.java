@@ -1,10 +1,10 @@
 package uno.cards;
 
-import uno.State;
+import uno.Rule;
 
 /**
  * SkipCard class, defines the implementation of how it is
- * used within the game, and how it alters the state of the
+ * used within the game, and how it alters the rule of the
  * game.
  */
 public class SkipCard extends Card {
@@ -15,13 +15,13 @@ public class SkipCard extends Card {
     }
 
     /**
-     * Uses state builder to create a state object that defines that
+     * Uses rule builder to create a rule object that defines that
      * the the game should skip the next player.
-     * @return State - Defined skip two card
+     * @return Rule - Defined skip two card
      */
     @Override
-    public State useCard() {
-        return new State.Builder(getColour(), getType())
+    public Rule useCard() {
+        return new Rule.Builder()
                 .shouldSkipPlayer()
                 .build();
     }

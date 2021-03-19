@@ -1,6 +1,6 @@
 package uno.cards;
 
-import uno.State;
+import uno.Rule;
 
 /**
  * The Card class is involved in outlining each card's colour,
@@ -24,12 +24,12 @@ public class Card {
      * @return State - how the game state should be altered from
      * using the card.
      */
-    public State useCard() {
+    public Rule useCard() {
         /*
-        Creates a state by using the builder. Since this
-        is a bse card, the card does not modify many special states.
+        Creates a Rule by using the builder. Since this
+        is a base card, the card does not modify many special states.
          */
-        return new State.Builder(colour, type).build();
+        return new Rule.Builder().build();
     }
 
     public CardColour getColour() {

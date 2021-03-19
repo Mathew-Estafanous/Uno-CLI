@@ -1,11 +1,11 @@
 package uno.cards;
 
-import uno.State;
+import uno.Rule;
 
 /**
  * Switch card defines its own implementation and how it is
  * used within the uno game. It shows how it will alter
- * the state of the game.
+ * the rule of the game.
  */
 public class SwitchCard extends Card {
 
@@ -15,14 +15,14 @@ public class SwitchCard extends Card {
     }
 
     /**
-     * Uses state builder to create a state object that defines that
+     * Uses rule builder to create a rule object that defines that
      * the the direction of the game should switch upon the use of
      * this card.
-     * @return State - Defined Switch Card
+     * @return Rule - Defined Switch Card
      */
     @Override
-    public State useCard() {
-        return new State.Builder(getColour(), getType())
+    public Rule useCard() {
+        return new Rule.Builder()
                 .flipDirectionOfGame()
                 .build();
     }
