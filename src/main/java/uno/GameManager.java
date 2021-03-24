@@ -40,7 +40,7 @@ public class GameManager {
         //Prompt the user for the username that they would like to use.
         String playerName = interaction.chooseString("Choose a player name: ");
         //Add the real player to the list of players.
-        players.add(new RealPlayer(playerName));
+        players.add(new RealPlayer(playerName, interaction));
 
         //Prompt the user, asking how many opponents they want to verse.
         interaction.display("How many AI players do you want to verse?");
