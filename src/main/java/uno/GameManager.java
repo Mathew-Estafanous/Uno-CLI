@@ -10,8 +10,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Game Manager is the main class that connects each part of the code
+ * together into one cohesive game. It controls the general flow of
+ * the game and manages the entire state from start to finish.
+ */
 public class GameManager {
 
+    //Used when interacting with the user for both input and output.
     private final Interactions interaction;
     private List<Player> players = new ArrayList<>();
     private Deck deck = new Deck();
@@ -28,11 +34,10 @@ public class GameManager {
         interaction.display("WELCOME TO UNO");
         createAllPlayers();
         assignPlayerStartingHands();
+        System.out.println("HELLO");
     }
 
-    /**
-     * Creates all the players that will be participating in the game.
-     */
+    //Creates all the players that will be participating in the game.
     private void createAllPlayers() {
         interaction.display("---------- \n" +
                                 "PLAYER SELECTION");
@@ -56,9 +61,16 @@ public class GameManager {
         }
     }
 
+    //Give each player in the game, 7 cards as their starting hand.
     private void assignPlayerStartingHands() {
+        //Iterate over each player in the list.
         players.forEach(player -> {
-            List<Card> startingHand = Collections.nCopies(7, deck.dealCard());
+            List<Card> startingHand = new ArrayList<>();
+            //Iterate seven times while dealing a card to the hand.
+            for(int i = 0; i < 7; i++) {
+                startingHand.add(deck.dealCard());
+            }
+            //Make player pickup the 7 card starting hand.
             player.pickUpCards(startingHand);
         });
     }
