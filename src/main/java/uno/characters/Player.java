@@ -17,7 +17,7 @@ public abstract class Player {
 
     private final String name;
 
-    private List<Card> cardHand = new ArrayList<>();
+    protected List<Card> cardHand = new ArrayList<>();
 
     //Constructor that requires a name to be instantiated.
     public Player(String name) {
