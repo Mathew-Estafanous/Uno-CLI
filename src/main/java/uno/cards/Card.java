@@ -39,4 +39,8 @@ public class Card {
     public CardType getType() {
         return type;
     }
+
+    public CardColour setColour(CardColour colour) {
+      this.colour = colour;
+    }
 }
