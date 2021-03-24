@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static uno.cards.CardType.*;
+import static uno.cards.CardColour.*;
+
 /**
  * The Deck class manages the creation of the deck of cards and
  * dealing the top card whenever needed. Upon instantiating a Deck
@@ -21,14 +24,12 @@ public class Deck {
 
     //List out all the possible card numbers
     private final static CardType[] NUMERIC_TYPES = new CardType[] {
-        CardType.ZERO, CardType.ONE, CardType.TWO,
-        CardType.THREE, CardType.FOUR, CardType.FIVE,
-        CardType.SIX, CardType.SEVEN, CardType.EIGHT, CardType.NINE
+        ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE
     };
 
     //List out all the possible colours
     private final static CardColour[] REGULAR_COLOURS = new CardColour[] {
-        CardColour.BLUE, CardColour.GREEN, CardColour.RED, CardColour.YELLOW
+        BLUE, GREEN, RED, YELLOW
     };
 
     private final List<Card> deckOfCards = new ArrayList<Card>();
@@ -43,18 +44,25 @@ public class Deck {
      * and adding it to the deck of cards list.
      */
     private void generateNewDeck() {
-        //Iterate over every numeric type of card.
-        for(CardType type: NUMERIC_TYPES) {
-            //Iterate over each regular colour
-            for(CardColour colour: REGULAR_COLOURS) {
-                //For-each colour & type generate 2 numeric cards.
-                deckOfCards.addAll(Arrays.asList(
-                    new Card(colour, type),
-                    new Card(colour, type)
-                ));
-            }
-        }
+        addNumericCards();
+        addActionCards();
+        addWildCards();
 
+        //Use the collections library to shuffle the list.
+        Collections.shuffle(deckOfCards);
+    }
+
+    private void addWildCards() {
+        //Iterate four times and add wild card types to the deck each time.
+        for(int i = 0; i < 4; i++){
+            deckOfCards.addAll(Arrays.asList(
+                    new WildCard(),
+                    new WildDrawFourCard()
+            ));
+        }
+    }
+
+    private void addActionCards() {
         //Iterate over each regular colour.
         for(CardColour colour: REGULAR_COLOURS) {
             //Iterate 2 times for each colour.
@@ -67,17 +75,20 @@ public class Deck {
                 ));
             }
         }
+    }
 
-        //Iterate four times and add wild card types to the deck each time.
-        for(int i = 0; i < 4; i++){
-            deckOfCards.addAll(Arrays.asList(
-                    new WildCard(),
-                    new WildDrawFourCard()
-            ));
+    private void addNumericCards() {
+        //Iterate over every numeric type of card.
+        for(CardType type: NUMERIC_TYPES) {
+            //Iterate over each regular colour
+            for(CardColour colour: REGULAR_COLOURS) {
+                //For-each colour & type generate 2 numeric cards.
+                deckOfCards.addAll(Arrays.asList(
+                    new Card(colour, type),
+                    new Card(colour, type)
+                ));
+            }
         }
-
-        //Use the collections library to shuffle the list.
-        Collections.shuffle(deckOfCards);
     }
 
     /**
