@@ -40,7 +40,7 @@ public class Card {
         return type;
     }
 
-    public CardColour setColour(CardColour colour) {
+    public void setColour(CardColour colour) {
       this.colour = colour;
     }
 }
