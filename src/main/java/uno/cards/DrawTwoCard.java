@@ -11,7 +11,7 @@ public class DrawTwoCard extends Card {
 
     //Constructor that takes in the card colour but defines the card type itself.
     public DrawTwoCard(CardColour colour) {
-        super(colour, CardType.DRAWTWO);
+        super(colour, CardType.DRAW_TWO);
     }
 
     /**

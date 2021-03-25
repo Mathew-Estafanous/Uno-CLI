@@ -34,8 +34,16 @@ public abstract class Player {
         cardHand.addAll(cards);
     }
 
+    public void pickUpCard(Card card) {
+        cardHand.add(card);
+    }
+
     public String getName() {
         return name;
+    }
+
+    public boolean isOutOfCards() {
+        return cardHand.size() == 0;
     }
 
     /**

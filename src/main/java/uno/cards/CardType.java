@@ -18,7 +18,7 @@ public enum CardType {
     NINE("9"),
     SWITCH("↺"),
     SKIP("⮿"),
-    DRAWTWO("+2"),
+    DRAW_TWO("+2"),
     WILD("W"),
     WILD_DRAWFOUR("W+4");
 

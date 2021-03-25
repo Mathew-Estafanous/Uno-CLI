@@ -12,13 +12,13 @@ package uno;
 public class Rule {
 
     public final int cardsToDraw;
-    public final int directionOfGame;
+    public final boolean flipDirection;
     public final boolean skipNextPlayer;
 
     //The constructor is private since it should only be created from the builder.
-    private Rule(int cardsToNextPlayer, int directionOfGame, boolean skipNextPlayer) {
+    private Rule(int cardsToNextPlayer, boolean flipDirection, boolean skipNextPlayer) {
         this.cardsToDraw = cardsToNextPlayer;
-        this.directionOfGame = directionOfGame;
+        this.flipDirection = flipDirection;
         this.skipNextPlayer = skipNextPlayer;
     }
 
@@ -31,7 +31,7 @@ public class Rule {
     public static class Builder {
 
         private int nextPlayerDraws = 0;
-        private int directionOfGame = 1;
+        private boolean flipDirection = false;
         private boolean skipNextPlayer = false;
 
         /**
@@ -58,7 +58,7 @@ public class Rule {
          * game will be flipped to -1 (Reverse).
          */
         public Builder flipDirectionOfGame() {
-            this.directionOfGame = -1;
+            this.flipDirection = true;
             return this;
         }
 
@@ -69,7 +69,7 @@ public class Rule {
          * options.
          */
         public Rule build() {
-            return new Rule(nextPlayerDraws, directionOfGame,
+            return new Rule(nextPlayerDraws, flipDirection,
                     skipNextPlayer);
         }
     }
