@@ -34,7 +34,7 @@ public class GameManager {
         interaction.display("WELCOME TO UNO");
         createAllPlayers();
         assignPlayerStartingHands();
-        System.out.println("HELLO");
+        // System.out.println("HELLO");
     }
 
     //Creates all the players that will be participating in the game.
@@ -44,8 +44,7 @@ public class GameManager {
 
         //Prompt the user for the username that they would like to use.
         String playerName = interaction.chooseString("Choose a player name: ");
-        //Add the real player to the list of players.
-        players.add(new RealPlayer(playerName));
+        players.add(new RealPlayer(playerName, interaction));
 
         //Prompt the user, asking how many opponents they want to verse.
         interaction.display("How many AI players do you want to verse?");
@@ -56,9 +55,18 @@ public class GameManager {
         } while (numOfAI < 2 || numOfAI > 4);
 
         //Add the total number of AI players that the use wants to verse.
-        for (int i = 1; i <= numOfAI; i++) {
-            players.add(new AIPlayer("AI " + i));
+        List<String> AINames = setOfAINames(numOfAI);
+        for (String name: AINames) {
+            //TODO: Make randomly generated AI player names.
+            players.add(new AIPlayer(name));
         }
+    }
+
+    private List<String> setOfAINames(int numOfAI) {
+        List<String> names = new ArrayList<>();
+        
+
+        return names;
     }
 
     //Give each player in the game, 7 cards as their starting hand.

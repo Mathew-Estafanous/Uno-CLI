@@ -1,14 +1,13 @@
 package uno;
 
 /**
- * State class is used to define how the game state will be altered
- * when a given card is used. When the Card object is used, it returns
- * as state which has all the information to allow the GameManager
- * to correctly alter the state of the game to account for the functionality
- * of the game.
+ * Rule class is used to define how the game rules will the game when the
+ * card is used. When the Card object is used, it returns rules which have 
+ * all the information to allow the GameManager to correctly alter the state 
+ * of the game by using the defined rules by the card.
  * 
- * This State class can only be generated using the State.Builder which then
- * generates the immutable state object.
+ * This Rule class can only be generated using the Rule.Builder which then
+ * generates the immutable Rule object.
  */
 public class Rule {
 
@@ -24,10 +23,10 @@ public class Rule {
     }
 
     /**
-     * State Builder is used to create a well defined State object. It uses
+     * Rule Builder is used to create a well defined Rule object. It uses
      * the builder pattern where, optional settings are given but not enforced.
      * Once complete, the build method will be called, which will "build" and
-     * return a state object with the chosen options.
+     * return a Rule object with the chosen options.
      */
     public static class Builder {
 
@@ -64,9 +63,9 @@ public class Rule {
         }
 
         /**
-         * Generates a state object that contains all the options that
+         * Generates a rule object that contains all the options that
          * were set in the builder.
-         * @return State - the generated object containing the chosen
+         * @return Rule - the generated object containing the chosen
          * options.
          */
         public Rule build() {
