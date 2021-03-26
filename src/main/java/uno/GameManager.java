@@ -57,6 +57,7 @@ public class GameManager {
     }
 
     private void gameLoop() {
+        //TODO: Reset the terminal on every round.
         interaction.display("------");
         Player player = moveToNextPlayer();
 
@@ -64,6 +65,7 @@ public class GameManager {
         Card chosenCard = player.chooseCard(topCard);
         if (chosenCard == null) {
             player.pickUpCard(deck.dealCard());
+            interaction.display(player.getName() + " picked up a card!");
             gameLoop();
             return;
         }

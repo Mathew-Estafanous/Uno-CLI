@@ -80,7 +80,7 @@ public class CommandLineInteraction implements Interactions {
                 //Get the user input using the scanner nextInt()
                 userInput = input.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Wrong input! Only numeric (decimal) values are permitted. (ie 8.2 or 64)");
+                System.out.println("Wrong input! Only numeric (whole) values are permitted. (ie 2 or 3)");
                 //Need to move to next line or else scanner will keep reading previous print statement.
                 input.nextLine();
             }
