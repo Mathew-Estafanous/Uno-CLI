@@ -1,9 +1,10 @@
 package uno.characters;
 
 import uno.cards.Card;
+import uno.cards.CardColour;
+import uno.cards.CardType;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -46,11 +47,20 @@ public abstract class Player {
         return cardHand.size() == 0;
     }
 
+    protected boolean isValidCard(Card chosenCard, Card topCard) {
+        CardType chosenType = chosenCard.getType();
+        CardColour chosenColour = chosenCard.getColour();
+        return (chosenColour == topCard.getColour()) ||
+                (chosenType == topCard.getType()) ||
+                (chosenType == CardType.WILD) ||
+                (chosenType == CardType.WILD_DRAWFOUR);
+    }
+
     /**
      * This API is used to tell the player that they need to choose
      * a card from their hand and return their choice. Chosen cards
      * should also be removed from the player's hand.
      * @return Card - The chosen card by the player.
      */
-    public abstract Card chooseCard();
+    public abstract Card chooseCard(Card topCard);
 }

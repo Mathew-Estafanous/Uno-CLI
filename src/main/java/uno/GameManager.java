@@ -1,8 +1,6 @@
 package uno;
 
 import uno.cards.Card;
-import uno.cards.CardColour;
-import uno.cards.CardType;
 import uno.characters.AIPlayer;
 import uno.characters.Player;
 import uno.characters.RealPlayer;
@@ -34,6 +32,7 @@ public class GameManager {
     private int currentPlayer = -1;
     //Determines the direction of either reverse (-1) or forward (1).
     private int directionOfGame = 1;
+
     //Generates a list of possible names
     private List<String> possibleNames = Arrays.asList(
       "Glenn", "Sam", "Emily", "Colin", "Adriana"
@@ -51,30 +50,25 @@ public class GameManager {
         interaction.display("WELCOME TO UNO");
         createAllPlayers();
         assignPlayerStartingHands();
-        placeStartingTopCard();
+        //TODO: Make sure dealt card isn't a WILD Card
+        topCard = deck.dealCard();
+
         gameLoop();
     }
 
-    private void placeStartingTopCard() {
-        topCard = deck.dealCard();
-        interaction.display("Starting card is : " + topCard.getColour().name().toLowerCase());
-    }
-
     private void gameLoop() {
+        interaction.display("------");
         Player player = moveToNextPlayer();
-        Card chosenCard = null;
 
-        boolean validCard = false;
-        while (!validCard) {
-            chosenCard = player.chooseCard();
-            validCard = cardIsValid(chosenCard);
-            if (!validCard)
-                player.pickUpCard(chosenCard);
+        interaction.display("Top Card: " + topCard);
+        Card chosenCard = player.chooseCard(topCard);
+        if (chosenCard == null) {
+            player.pickUpCard(deck.dealCard());
+            gameLoop();
+            return;
         }
 
-        String cardName = chosenCard.getColour().name().toLowerCase().concat(" ");
-        String cardType = chosenCard.getType().name().toLowerCase();
-        interaction.display(player.getName() + " played " + cardName + cardType + ".");
+        interaction.display(player.getName() + " played " + chosenCard + ".");
 
         if (player.isOutOfCards()) {
             playerWon(player);
@@ -84,6 +78,7 @@ public class GameManager {
         Rule cardRules = chosenCard.useCard();
         topCard = chosenCard;
         applyCardRulesToGameState(cardRules);
+        gameLoop();
     }
 
     private void applyCardRulesToGameState(Rule cardRules) {
@@ -97,17 +92,6 @@ public class GameManager {
     private void playerWon(Player player) {
         //TODO: Make a proper congrats message and stuff.
         interaction.display("Congrats, " + player.getName() + " has won!");
-    }
-
-    private boolean cardIsValid(Card chosenCard) {
-        CardType chosenType = chosenCard.getType();
-        CardColour chosenColour = chosenCard.getColour();
-        /* Return true of any of these requirements are met. If none of these
-        * requirements are met, then it is invalid and return false. */
-        return (chosenColour == topCard.getColour()) ||
-                (chosenType == topCard.getType()) ||
-                (chosenType == CardType.WILD) ||
-                (chosenType == CardType.WILD_DRAWFOUR);
     }
 
     /**

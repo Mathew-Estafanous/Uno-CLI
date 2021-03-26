@@ -43,4 +43,11 @@ public class Card {
     public void setColour(CardColour colour) {
       this.colour = colour;
     }
+
+    @Override
+    public String toString() {
+        String cardColour = getColour().name().concat(" ");
+        String cardName = getType().name();
+        return cardColour + cardName;
+    }
 }

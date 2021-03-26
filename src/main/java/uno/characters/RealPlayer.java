@@ -18,25 +18,33 @@ public class RealPlayer extends Player {
   }
 
   @Override
-  public Card chooseCard() {
+  public Card chooseCard(Card topCard) {
     int selectedCard;
-    int maxSize;
+    boolean chosenACard = false;
     do {
       //Display player's current hand
       interaction.displayHand(cardHand);
       
       //The player chooses which card they will select from their array of cards
       interaction.display("Select a card from your hand to play. ");
-      maxSize = cardHand.size() - 1;
-      String question = String.format("Enter num from 0-%s: ", maxSize);
+      int maxSize = cardHand.size() - 1;
+      String question = String.format("Enter num from 0-%s or -1 (pick up card): ", maxSize);
       selectedCard = interaction.chooseInteger(question);
       
-      /* Cheks that integer corresponds with an element. If not,  then
+      /* Checks that integer corresponds with an element. If not,  then
       prompt the user that it was not valid. */ 
-      if (selectedCard < 0 || selectedCard > maxSize) {
+      if (selectedCard < -1 || selectedCard > maxSize) {
         interaction.display("This is not a valid choice.");
+        continue;
+      } else if(selectedCard == -1) {
+        return null;
       }
-    } while (selectedCard < 0 || selectedCard > maxSize); //The player must continure to select a card until a valid option is chosen
+
+      Card chosenCard = cardHand.get(selectedCard);
+      if (!isValidCard(chosenCard, topCard))
+        continue;
+      chosenACard = true;
+    } while (!chosenACard);
 
     //The card selected by the player is removed the array
     Card card = cardHand.remove(selectedCard);
