@@ -7,8 +7,11 @@ import uno.characters.RealPlayer;
 import uno.frontend.Interactions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import java.util.Random;
 
 /**
  * Game Manager is the main class that connects each part of the code
@@ -21,6 +24,11 @@ public class GameManager {
     private final Interactions interaction;
     private List<Player> players = new ArrayList<>();
     private Deck deck = new Deck();
+
+    //Generates a list of possible names
+    private List<String> possibleNames = Arrays.asList(
+      "Glenn", "Sam", "Emily", "Colin", "Adriana"
+    );
 
     public GameManager(Interactions interaction) {
         this.interaction = interaction;
@@ -40,7 +48,7 @@ public class GameManager {
     //Creates all the players that will be participating in the game.
     private void createAllPlayers() {
         interaction.display("---------- \n" +
-                                "PLAYER SELECTION");
+                            "PLAYER SELECTION");
 
         //Prompt the user for the username that they would like to use.
         String playerName = interaction.chooseString("Choose a player name: ");
@@ -57,15 +65,26 @@ public class GameManager {
         //Add the total number of AI players that the use wants to verse.
         List<String> AINames = setOfAINames(numOfAI);
         for (String name: AINames) {
-            //TODO: Make randomly generated AI player names.
             players.add(new AIPlayer(name));
         }
     }
 
+    //Adds players to the game based on the user's input
     private List<String> setOfAINames(int numOfAI) {
+        Random rand = new Random();
+        //creates a list for the names
         List<String> names = new ArrayList<>();
-        
-
+        String word;
+        while(names.size() < numOfAI) {
+          //randomly selects the name of a player
+          int index = rand.nextInt(possibleNames.size());
+          word = possibleNames.get(index);
+          
+          //if the name is already added to the list of names, look for a different name
+          if(names.contains(word)) continue;
+          //add the name to the list
+          names.add(word);
+        }
         return names;
     }
 
