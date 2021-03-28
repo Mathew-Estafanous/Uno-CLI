@@ -31,7 +31,7 @@ public class RealPlayer extends Player {
       String question = String.format("Enter num from 0-%s or -1 (pick up card): ", maxSize);
       selectedCard = interaction.chooseInteger(question);
       
-      /* Checks that integer corresponds with an element. If not,  then
+      /* Checks that integer corresponds with an element. If not, then
       prompt the user that it was not valid. */ 
       if (selectedCard < -1 || selectedCard > maxSize) {
         interaction.display("This is not a valid choice.");
@@ -48,22 +48,14 @@ public class RealPlayer extends Player {
 
     //The card selected by the player is removed the array
     Card card = cardHand.remove(selectedCard);
-    
-    //TODO: put WILD check into the Player abstract class.
+
     //If the player selects a WILD card, they must choose what colour the card will be
     if (card.getColour() == WILD) {
       interaction.display("Select which colour your wild card will be: ");
       //The player must select what colour their WILD card will be
-      int colourSelect = interaction.chooseInteger("Red: 1\nBlue: 2\nYellow: 3\n Green: 4");
-      if (colourSelect == 1) {
-        card.setColour(RED);
-      } else if (colourSelect == 2) {
-        card.setColour(BLUE);
-      } else if (colourSelect == 3) {
-        card.setColour(YELLOW);
-      } else if (colourSelect == 4) {
-        card.setColour(GREEN);
-      }
+      //TODO: Ensure that use chose a valid number of 1-4.
+      int colourSelect = interaction.chooseInteger("Red: 1\nBlue: 2\nYellow: 3\nGreen: 4");
+      alterWildCardToColour(card, colourSelect);
     }
     return card; //The cards returned
 

@@ -1,8 +1,6 @@
 package uno.characters;
 
 import uno.cards.Card;
-import uno.cards.CardColour;
-import uno.cards.CardType;
 
 import static uno.cards.CardColour.*;
 
@@ -35,15 +33,7 @@ public class AIPlayer extends Player {
       if(card.getColour() == WILD) {
         //randomly setting the colour after a wild card is played
         choice = rand.nextInt(4);
-        if(choice == 0) {
-          card.setColour(GREEN);
-        } else if(choice == 1) {
-          card.setColour(RED);
-        } else if(choice == 2) {
-          card.setColour(YELLOW);
-        } else {
-          card.setColour(BLUE);
-        }
+        alterWildCardToColour(card, choice);
       }
       return card;
     }
