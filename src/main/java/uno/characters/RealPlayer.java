@@ -49,7 +49,7 @@ public class RealPlayer extends Player {
     //The card selected by the player is removed the array
     Card card = cardHand.remove(selectedCard);
     
-    
+    //TODO: put WILD check into the Player abstract class.
     //If the player selects a WILD card, they must choose what colour the card will be
     if (card.getColour() == WILD) {
       interaction.display("Select which colour your wild card will be: ");

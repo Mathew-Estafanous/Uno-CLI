@@ -29,7 +29,6 @@ public class CommandLineInteraction implements Interactions {
     @Override
     public void displayHand(List<Card> cards) {
         //Set all colours to alter background and set text bold.
-        System.out.println("----------");
         System.out.print(REVERSE + BOLD);
         //Iterate over each card in the list of cards.
         cards.forEach(card -> {
@@ -52,7 +51,7 @@ public class CommandLineInteraction implements Interactions {
             System.out.printf(" %s%s", i, " ".repeat(length));
         }
         //Move to the next line for future output.
-        System.out.println("\n----------");
+        System.out.println();
     }
 
     /**

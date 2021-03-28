@@ -1,2 +1,2 @@
 language="java11"
-run="mvn package && clear && java -cp ./target/Uno-CLI-1.0-SNAPSHOT.jar uno.Main"
+run="mvn clean install && clear && java -cp ./target/Uno-CLI-1.0-SNAPSHOT.jar uno.Main"
