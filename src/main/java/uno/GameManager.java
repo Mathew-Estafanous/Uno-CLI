@@ -72,7 +72,7 @@ public class GameManager{
           player.pickUpCard(deck.dealCard());
         }
 
-        interaction.display("Top Card: " + topCard);
+        interaction.displayCard("Top Card: ", topCard);
         Card chosenCard = player.chooseCard(topCard);
         if (chosenCard == null) {
             player.pickUpCard(deck.dealCard());
@@ -81,7 +81,7 @@ public class GameManager{
             return;
         }
 
-        interaction.display(player.getName() + " played " + chosenCard + ".");
+        interaction.displayCard(player.getName() + " played ", chosenCard);
 
         if (player.isOutOfCards()) {
             playerWon(player);

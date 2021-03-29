@@ -29,6 +29,8 @@ public interface Interactions {
      */
     void display(String text);
 
+    void displayCard(String text, Card card);
+
     /**
      * Gets integer input by prompting the question and validating the int.
      * @param prompt - The question or request to the user.

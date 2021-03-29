@@ -64,6 +64,16 @@ public class CommandLineInteraction implements Interactions {
         System.out.println(text);
     }
 
+    @Override
+    public void displayCard(String text, Card card) {
+        System.out.print(text);
+        System.out.print(REVERSE + BOLD);
+        String colour = card.getColour().colour();
+        String displayName = card.getType().displayName();
+        System.out.printf("%s %s ", colour, displayName);
+        System.out.println(RESET);
+    }
+
     /**
      * Prompts the request to the user and proceeds to ask them for an integer
      * input. Ensures that the input is a valid integer input. If not, the user
@@ -79,7 +89,7 @@ public class CommandLineInteraction implements Interactions {
                 //Get the user input using the scanner nextInt()
                 userInput = input.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Wrong input! Only numeric (whole) values are permitted. (ie 2 or 3)");
+                System.out.println("Wrong input! Only numeric (whole) values are permitted. (i.e 2 or 3)");
                 //Need to move to next line or else scanner will keep reading previous print statement.
                 input.nextLine();
             }
