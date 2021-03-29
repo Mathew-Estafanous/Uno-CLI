@@ -22,7 +22,6 @@ public class WildDrawFourCard extends Card {
      */
     @Override
     public Rule useCard() {
-        //TODO: Place holder until wild +4 can set the colour depending on user input.
         return new Rule.Builder()
                 .nextPlayerDraws(4)
                 .build();

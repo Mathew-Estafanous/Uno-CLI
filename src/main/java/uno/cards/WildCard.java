@@ -22,7 +22,6 @@ public class WildCard extends Card {
      */
     @Override
     public Rule useCard() {
-        //TODO: Placeholder till wild card can determine the user selected colour.
         return new Rule.Builder()
                 .build();
     }
