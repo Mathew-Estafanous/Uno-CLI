@@ -1,8 +1,6 @@
 package uno;
 
 import uno.cards.Card;
-import uno.cards.WildCard;
-import uno.cards.WildDrawFourCard;
 import uno.characters.AIPlayer;
 import uno.characters.Player;
 import uno.characters.RealPlayer;
@@ -84,7 +82,7 @@ public class GameManager{
         interaction.displayCard(player.getName() + " played ", chosenCard);
 
         if (player.isOutOfCards()) {
-            playerWon(player);
+            interaction.playerWon(player);
             return;
         }
 
@@ -111,11 +109,6 @@ public class GameManager{
             moveToNextPlayer();
         
         nextPlayerDraws = cardRules.cardsToDraw;
-    }
-
-    private void playerWon(Player player) {
-        //TODO: Make a proper congrats message and stuff.
-        interaction.display("Congrats, " + player.getName() + " has won!");
     }
 
     /**

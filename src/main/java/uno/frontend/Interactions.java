@@ -1,6 +1,7 @@
 package uno.frontend;
 
 import uno.cards.Card;
+import uno.characters.Player;
 
 import java.util.List;
 
@@ -30,6 +31,12 @@ public interface Interactions {
     void display(String text);
 
     void displayCard(String text, Card card);
+
+    /**
+     * Called with the passed in player who won the game.
+     * @param player
+     */
+    void playerWon(Player player);
 
     /**
      * Gets integer input by prompting the question and validating the int.

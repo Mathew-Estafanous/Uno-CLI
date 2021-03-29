@@ -1,6 +1,7 @@
 package uno.frontend;
 
 import uno.cards.Card;
+import uno.characters.Player;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -72,6 +73,33 @@ public class CommandLineInteraction implements Interactions {
         String displayName = card.getType().displayName();
         System.out.printf("%s %s ", colour, displayName);
         System.out.println(RESET);
+    }
+
+    @Override
+    public void playerWon(Player player) {
+        System.out.print(BOLD);
+        System.out.println("CONGRATS, " + player.getName().toUpperCase() + " HAS WON!");
+
+        String fireworks = "      .''.      .        *''*    :_\\/_:     .\n" +
+                "      :_\\/_:   _\\(/_  .:.*_\\/_*   : /\\ :  .'.:.'.\n" +
+                "  .''.: /\\ :    /)\\   ':'* /\\ *  : '..'.  -=:o:=-\n" +
+                " :_\\/_:'.:::.  | ' *''*    * '.\\'/.'_\\(/_ '.':'.'\n" +
+                " : /\\ : :::::  =  *_\\/_*     -= o =- /)\\     '  *\n" +
+                "  '..'  ':::' === * /\\ *     .'/.\\'.  ' ._____\n" +
+                "      *        |   *..*         :       |.   |' .---\"|\n" +
+                "        *      |     _           .--'|  ||   | _|    |\n" +
+                "        *      |  .-'|       __  |   |  |    ||      |\n" +
+                "     .-----.   |  |' |  ||  |  | |   |  |    ||      |\n" +
+                " ___'       ' /\"\\ |  '-.\"\".    '-'   '-.'    '`      |____\n" +
+                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                "   ~~~~~~              ~-~-~-~-~-~-~-~-~-~   /|\n" +
+                "                 ~-~-~-~-~-~-~-~  /|~       /_|\\\n" +
+                "        _-H-__  -~-~-~-~-~-~     /_|\\    -~======-~\n" +
+                "~-\\XXXXXXXXXX/~     ~-~-~-~     /__|_\\ ~-~-~-~\n" +
+                "~-~-~-~-~-~    ~-~~-~-~-~-~    ========  ~-~-~-~\n" +
+                "      ~-~~-~-~-~-~-~-~-~-~-~-~-~ ~-~~-~-~-~-~\n" +
+                "                        ~-~~-~-~-~-~";
+        System.out.println(fireworks);
     }
 
     /**
