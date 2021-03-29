@@ -1,6 +1,8 @@
 package uno;
 
 import uno.cards.Card;
+import uno.cards.WildCard;
+import uno.cards.WildDrawFourCard;
 import uno.characters.AIPlayer;
 import uno.characters.Player;
 import uno.characters.RealPlayer;
@@ -11,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import static uno.cards.CardColour.WILD;
 
 /**
  * Game Manager is the main class that connects each part of the code
@@ -32,6 +36,7 @@ public class GameManager{
     private int currentPlayer = -1;
     //Determines the direction of either reverse (-1) or forward (1).
     private int directionOfGame = 1;
+    private int nextPlayerDraws = 0;
 
     //Generates a list of possible names
     private List<String> possibleNames = Arrays.asList(
@@ -50,9 +55,11 @@ public class GameManager{
         interaction.display("WELCOME TO UNO");
         createAllPlayers();
         assignPlayerStartingHands();
-        //TODO: Make sure dealt card isn't a WILD Card
-        topCard = deck.dealCard();
-
+        
+        do{
+          topCard = deck.dealCard();
+        } while (topCard.getColour() == WILD);
+        
         gameLoop();
     }
 
@@ -61,6 +68,9 @@ public class GameManager{
         delayAndResetScreen();
         interaction.display("------");
         Player player = moveToNextPlayer();
+        for (int i = 0; i < nextPlayerDraws; i++) {
+          player.pickUpCard(deck.dealCard());
+        }
 
         interaction.display("Top Card: " + topCard);
         Card chosenCard = player.chooseCard(topCard);
@@ -99,7 +109,8 @@ public class GameManager{
 
         if (cardRules.skipNextPlayer)
             moveToNextPlayer();
-        //TODO: Apply the 'cardsToDraw' variable to the game state.
+        
+        nextPlayerDraws = cardRules.cardsToDraw;
     }
 
     private void playerWon(Player player) {

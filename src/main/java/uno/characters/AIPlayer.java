@@ -2,7 +2,7 @@ package uno.characters;
 
 import uno.cards.Card;
 
-import static uno.cards.CardColour.*;
+import static uno.cards.CardColour.WILD;
 
 import java.util.List;
 import java.util.Random;

@@ -92,14 +92,23 @@ public class Deck {
     }
 
     /**
+     * Resets the entire deck with a new set of cards that are
+     * properly shuffled.
+     */ 
+    private void resetDeck() {
+      deckOfCards.clear();
+      generateNewDeck();
+    }
+
+    /**
      * This method will return the top card in the deck when called and
      * remove it from the current deck. If the deck is empty, then
      * the method will return a null object.
      */
     public Card dealCard() {
-        //Check to see if deck is empty. If it is, return null.
+        //Check to see if deck is empty. If it is reset the deck.
         if(deckOfCards.size() == 0) {
-            return null;
+            resetDeck();
         }
         //Call remove on the list and return that card.
         return deckOfCards.remove(0);
