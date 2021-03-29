@@ -9,15 +9,15 @@ import uno.frontend.Interactions;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Game Manager is the main class that connects each part of the code
  * together into one cohesive game. It controls the general flow of
  * the game and manages the entire state from start to finish.
  */
-public class GameManager {
+public class GameManager{
 
     //Used when interacting with the user for both input and output.
     private final Interactions interaction;
@@ -57,7 +57,8 @@ public class GameManager {
     }
 
     private void gameLoop() {
-        //TODO: Reset the terminal on every round.
+        //Reset the terminal on every round.
+        delayAndResetScreen();
         interaction.display("------");
         Player player = moveToNextPlayer();
 
@@ -81,6 +82,16 @@ public class GameManager {
         topCard = chosenCard;
         applyCardRulesToGameState(cardRules);
         gameLoop();
+    }
+
+    private void delayAndResetScreen() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();
     }
 
     private void applyCardRulesToGameState(Rule cardRules) {
