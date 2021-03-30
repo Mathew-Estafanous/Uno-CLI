@@ -3,10 +3,7 @@ package uno.cards;
 import uno.Rule;
 
 /**
- * Draw Four Wild Cards define the implementation and how
- * it should be used within the game. Since it is a wild
- * card, it does not have a set colour that is pre-defined.
- * The colour is left up to the player to choose.
+ * WildDrawFourCard class defines how the WILDDrawFour card is implemented * within the game, and how it alters the rules of the game.
  */
 public class WildDrawFourCard extends Card {
 

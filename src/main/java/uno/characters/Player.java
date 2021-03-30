@@ -20,8 +20,8 @@ import static uno.cards.CardColour.*;
  */
 public abstract class Player {
 
+    //initializing a name, and cardHand
     private final String name;
-
     protected List<Card> cardHand = new ArrayList<>();
 
     //Constructor that requires a name to be instantiated.
@@ -38,14 +38,17 @@ public abstract class Player {
         cardHand.addAll(cards);
     }
 
+    //Adds a singular card to the player's hand.
     public void pickUpCard(Card card) {
         cardHand.add(card);
     }
 
+    //Method that gets the name of the player
     public String getName() {
         return name;
     }
 
+    //Sets the size of the card hand to zero whenever any player runs out of cards
     public boolean isOutOfCards() {
         return cardHand.size() == 0;
     }
@@ -77,8 +80,8 @@ public abstract class Player {
      */
     protected void alterWildCardToColour(Card card, int choice) {
         final Map<Integer, CardColour> numToColour = Map.of(
-                0, GREEN, 1, RED,
-                2, YELLOW, 3, BLUE
+                0, RED, 1, BLUE,
+                2, YELLOW, 3, GREEN
         );
         card.setColour(numToColour.get(choice));
     }

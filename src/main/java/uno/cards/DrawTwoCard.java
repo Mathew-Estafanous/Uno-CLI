@@ -3,9 +3,8 @@ package uno.cards;
 import uno.Rule;
 
 /**
- * This card defines the the implementation for how the draw
- * two cards works for the uno game and how it alters the
- * rule of the game when played.
+ * DrawTwoCard class defines how the DRAWTWO card is implemented within 
+ * the game, and how it alters the rules of the game.
  */
 public class DrawTwoCard extends Card {
 

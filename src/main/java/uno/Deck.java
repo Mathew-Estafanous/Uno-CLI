@@ -13,7 +13,7 @@ import static uno.cards.CardColour.*;
 /**
  * The Deck class manages the creation of the deck of cards and
  * dealing the top card whenever needed. Upon instantiating a Deck
- * object, the deck of cards will automatically generate and shuffled.
+ * object, the deck of cards will automatically generate and shuffle.
  * The following are the number of each card type that is made by the deck.
  * </br>
  * Numeric Cards: 80 (2 of Each Number & Colour)
@@ -52,6 +52,7 @@ public class Deck {
         Collections.shuffle(deckOfCards);
     }
 
+//Adds the corresponding amount of wild cards to the deck
     private void addWildCards() {
         //Iterate four times and add wild card types to the deck each time.
         for(int i = 0; i < 4; i++){
@@ -62,6 +63,7 @@ public class Deck {
         }
     }
 
+    //Adds the corresponding amount of action cards to the deck
     private void addActionCards() {
         //Iterate over each regular colour.
         for(CardColour colour: REGULAR_COLOURS) {
@@ -77,6 +79,7 @@ public class Deck {
         }
     }
 
+    //Adds the corresponding amount of numeric cards to the deck
     private void addNumericCards() {
         //Iterate over every numeric type of card.
         for(CardType type: NUMERIC_TYPES) {
@@ -103,7 +106,7 @@ public class Deck {
     /**
      * This method will return the top card in the deck when called and
      * remove it from the current deck. If the deck is empty, then
-     * the method will return a null object.
+     * the method will reset the deck.
      */
     public Card dealCard() {
         //Check to see if deck is empty. If it is reset the deck.

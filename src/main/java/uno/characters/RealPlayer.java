@@ -4,10 +4,10 @@ import uno.cards.Card;
 import uno.frontend.Interactions;
 import static uno.cards.CardColour.*;
 
-/*The RealPlayer class is an extension of the Player class. 
- * It allows the human player to select a card from their current 
- * hand. If the human player chooses a WILD card, the player is given the
- * choice to choose what colour the card will be. */
+/* The RealPlayer class is an extension of the Player class. 
+ * It allows the human player to select a card from their current hand.
+ * If the human player chooses a WILD card, the player is given the
+ * choice to choose what colour that card will be. */
 public class RealPlayer extends Player {
 
     private final Interactions interaction;
@@ -17,6 +17,10 @@ public class RealPlayer extends Player {
       this.interaction = interaction;
     }
 
+    /* This method will prompt the user asking for the card they would like
+     * to play. It will then validate the user choice, also give the option to 
+     * chose the colour if the card they chose is a Wild card. 'null' is returned
+     * if the user would like to pickup a card. */
     @Override
     public Card chooseCard(Card topCard) {
         int selectedCard;
@@ -36,13 +40,18 @@ public class RealPlayer extends Player {
             if (selectedCard < -1 || selectedCard > maxSize) {
                 interaction.display("This is not a valid choice.");
                 continue;
-            } else if(selectedCard == -1) {
+            }
+            
+            //Check if the user chose -1. If so, then they want to pick-up a card.
+            if(selectedCard == -1) {
                 return null;
             }
 
             Card chosenCard = cardHand.get(selectedCard);
+            //Check that the chosen card is valid. If not then continue looping.
             if (!isValidCard(chosenCard, topCard))
               continue;
+            
             chosenACard = true;
         } while (!chosenACard);
 
@@ -51,21 +60,23 @@ public class RealPlayer extends Player {
 
         //If the player selects a WILD card, they must choose what colour the card will be
         if (card.getColour() == WILD) {
-            playerChooseDifferentColour(card);
+            changeToRegularColour(card);
         }
-        return card; //The cards returned
+        return card;
     }
 
-    private void playerChooseDifferentColour(Card card) {
+    /* Prompts the user for the colour they would like and changes the colour of
+     * the passed in wild card */
+    private void changeToRegularColour(Card wilCard) {
         int colourSelect;
         do {
-            interaction.display("Red: 1 || Blue: 2 || Yellow: 3 || Green 4");
+            interaction.display("Red: 0 || Blue: 1 || Yellow: 2 || Green 3");
             //The player must select what colour their WILD card will be
             colourSelect = interaction.chooseInteger("Select which colour your wild card will be: ");
-            if (colourSelect < 1 || colourSelect > 4) {
+            if (colourSelect < 0 || colourSelect > 3) {
               interaction.display("This is not a valid choice.");
             }
-        } while (colourSelect < 1 || colourSelect > 4); //Ensures the user must eneter a valid integer in order to choose the colour
-        alterWildCardToColour(card, colourSelect);
+        } while (colourSelect < 0 || colourSelect > 3); //Ensures the user must eneter a valid integer in order to choose the colour
+        alterWildCardToColour(wilCard, colourSelect);
     }
 }

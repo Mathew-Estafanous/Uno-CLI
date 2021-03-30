@@ -3,7 +3,7 @@ package uno.cards;
 import uno.Rule;
 
 /**
- * The Card class is involved in outlining each card's colour,
+ * The Card class is involved in outlining each card's colour and
  * the card type. The card also outlines it's own implementation
  * of how it should be used in the the game.
  */
@@ -11,7 +11,7 @@ public class Card {
 
     private CardColour colour;
     private CardType type;
-
+    
     //Constructor to create a card with the colour and type.
     public Card(CardColour colour, CardType type) {
         this.colour = colour;
@@ -25,10 +25,8 @@ public class Card {
      * using the card.
      */
     public Rule useCard() {
-        /*
-        Creates a Rule by using the builder. Since this
-        is a base card, the card does not modify many special states.
-         */
+       /* Creates a Rule by using the builder. Since this
+        * is a base card, the card does not modify many special states. */
         return new Rule.Builder().build();
     }
 

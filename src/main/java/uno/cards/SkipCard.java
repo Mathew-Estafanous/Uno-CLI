@@ -3,9 +3,8 @@ package uno.cards;
 import uno.Rule;
 
 /**
- * SkipCard class, defines the implementation of how it is
- * used within the game, and how it alters the rule of the
- * game.
+ * SkipCard class defines how the SKIP card is implemented within the game,
+ * and how it alters the rules of the game.
  */
 public class SkipCard extends Card {
 

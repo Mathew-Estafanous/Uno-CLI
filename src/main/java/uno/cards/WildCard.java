@@ -3,10 +3,8 @@ package uno.cards;
 import uno.Rule;
 
 /**
- * Wild Card is a class that defines its special implementation
- * of how it should be used within the game. Since it is a wild
- * card, the card colour is not pre-defined and is left up for
- * the user to select.
+ * WildCard class defines how the WILD card is implemented within the game,
+ * and how it alters the rules of the game.
  */
 public class WildCard extends Card {
 

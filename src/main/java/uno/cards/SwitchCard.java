@@ -3,9 +3,8 @@ package uno.cards;
 import uno.Rule;
 
 /**
- * Switch card defines its own implementation and how it is
- * used within the uno game. It shows how it will alter
- * the rule of the game.
+ * SwitchCard class defines how the SWITCH card is implemented within the 
+ * game, and how it alters the rules of the game.
  */
 public class SwitchCard extends Card {
 

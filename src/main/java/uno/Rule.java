@@ -24,7 +24,7 @@ public class Rule {
 
     /**
      * Rule Builder is used to create a well defined Rule object. It uses
-     * the builder pattern where, optional settings are given but not enforced.
+     * the builder pattern, where optional settings are given but not enforced.
      * Once complete, the build method will be called, which will "build" and
      * return a Rule object with the chosen options.
      */
@@ -45,7 +45,7 @@ public class Rule {
 
         /**
          * Set the total number of cards that the next player should
-         * draw during their round.
+         * draw at the beggining of their turn.
          * @param total
          */
         public Builder nextPlayerDraws(int total) {
@@ -56,6 +56,7 @@ public class Rule {
         /**
          * When this method is used in the builder, the direction of the
          * game will be flipped to -1 (Reverse).
+         * The flip direction of game will be set to true when this method * is called.
          */
         public Builder flipDirectionOfGame() {
             this.flipDirection = true;
