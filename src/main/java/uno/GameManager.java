@@ -60,12 +60,13 @@ public class GameManager {
       topCard = deck.dealCard();
     } while (topCard.getColour() == WILD);
 
+    interaction.display("STARTING UNO GAME");
     gameLoop();
   }
 
   // Creates all the players that will be participating in the game.
   private void setupAllPlayers() {
-    interaction.display("---------- \n PLAYER SELECTION");
+    interaction.display("----------\nPLAYER SELECTION");
 
     // Prompt the user for the username that they would like to use.
     String playerName = interaction.chooseString("Choose a player name: ");
@@ -157,10 +158,8 @@ public class GameManager {
       return;
     }
 
-    /*
-     * To use the chosen card, we call 'userCard' which will return an object that
-     * defines how the card can be used.
-     */
+    /* To use the chosen card, we call 'userCard' which will return an object that
+     * defines how the card can be used. */
     Attribute cardAttribute = chosenCard.useCard();
     topCard = chosenCard;
     // Apply the defined rules to the current state of the game.

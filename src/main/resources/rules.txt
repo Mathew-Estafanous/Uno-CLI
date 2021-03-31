@@ -1,4 +1,32 @@
-WHAT IS GOING ON BRO
-IS IT GOOD
-WOAH
-NO WAY
+======= RULES =======
+Object of the Game:
+The first player to play all of the cards from their hand before their opponents wins the game!
+
+Setup:
+Each player is randomly dealt 7 cards. The top card is then flipped face up and then the game begins.
+
+Special Cards:
+Draw 2 Card:
+When you play this card, the next person to play must draw 2 cards 
+If this card is turned up at the beginning of play, the first player must draw two cards. This card may only be played on a matching color or on another Draw 2 card.
+
+Reverse Card:
+This card reverses direction of play. Play to the left now passes to the right, and vice versa.
+
+Skip Card:
+The next person in line to play after this card is played loses his/her turn and is "skipped".
+If this card is turned up at the beginning of play, the first player is skipped.
+This card may only be played on a matching color or on another Skip card.
+
+Wild Card:
+When you play this card, you may change the color being played to any color to continue play.
+
+Wild Draw 4 Card:
+This card allows you to call the next color played and requires the next player to pick 4 cards from the draw pile.
+
+Game Play:
+The player always goes first, Match the top card on the discard pile either by number, color or word. If you don't have anything that matches, you must pick a card from the DRAW pile. If you draw a card you can play, play it. Otherwise, play moves to the next person. 
+
+Going Out:
+The game ends when a player finishes their hand.
+==================
