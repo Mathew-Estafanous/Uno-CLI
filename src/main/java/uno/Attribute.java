@@ -1,22 +1,22 @@
 package uno;
 
 /**
- * Rule class is used to define how the game rules will the game when the
+ * Attribute class is used to define how the game rules will the game when the
  * card is used. When the Card object is used, it returns rules which have 
  * all the information to allow the GameManager to correctly alter the state 
  * of the game by using the defined rules by the card.
  * 
- * This Rule class can only be generated using the Rule.Builder which then
+ * This Attribute class can only be generated using the Attribute.Builder which then
  * generates the immutable Rule object.
  */
-public class Rule {
+public class Attribute {
 
     public final int cardsToDraw;
     public final boolean flipDirection;
     public final boolean skipNextPlayer;
 
     //The constructor is private since it should only be created from the builder.
-    private Rule(int cardsToNextPlayer, boolean flipDirection, boolean skipNextPlayer) {
+    private Attribute(int cardsToNextPlayer, boolean flipDirection, boolean skipNextPlayer) {
         this.cardsToDraw = cardsToNextPlayer;
         this.flipDirection = flipDirection;
         this.skipNextPlayer = skipNextPlayer;
@@ -26,7 +26,7 @@ public class Rule {
      * Rule Builder is used to create a well defined Rule object. It uses
      * the builder pattern, where optional settings are given but not enforced.
      * Once complete, the build method will be called, which will "build" and
-     * return a Rule object with the chosen options.
+     * return a Attribute object with the chosen options.
      */
     public static class Builder {
 
@@ -45,7 +45,7 @@ public class Rule {
 
         /**
          * Set the total number of cards that the next player should
-         * draw at the beggining of their turn.
+         * draw at the beginning of their turn.
          * @param total
          */
         public Builder nextPlayerDraws(int total) {
@@ -66,11 +66,11 @@ public class Rule {
         /**
          * Generates a rule object that contains all the options that
          * were set in the builder.
-         * @return Rule - the generated object containing the chosen
+         * @return Attribute - the generated object containing the chosen
          * options.
          */
-        public Rule build() {
-            return new Rule(nextPlayerDraws, flipDirection,
+        public Attribute build() {
+            return new Attribute(nextPlayerDraws, flipDirection,
                     skipNextPlayer);
         }
     }

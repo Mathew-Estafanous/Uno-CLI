@@ -1,6 +1,6 @@
 package uno.cards;
 
-import uno.Rule;
+import uno.Attribute;
 
 /**
  * The Card class is involved in outlining each card's colour and
@@ -21,13 +21,13 @@ public class Card {
     /**
      * Outlines the card's implementation and how it should change
      * the state of the game whenever it is used.
-     * @return State - how the game state should be altered from
+     * @return Attribute - how the game state should be altered from
      * using the card.
      */
-    public Rule useCard() {
-       /* Creates a Rule by using the builder. Since this
-        * is a base card, the card does not modify many special states. */
-        return new Rule.Builder().build();
+    public Attribute useCard() {
+        /* Creates an Attribute by using the builder. Since this
+        is a base card, the card does not modify many special states. */
+        return new Attribute.Builder().build();
     }
 
     public CardColour getColour() {

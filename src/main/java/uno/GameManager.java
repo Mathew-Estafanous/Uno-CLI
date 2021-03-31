@@ -161,10 +161,10 @@ public class GameManager {
      * To use the chosen card, we call 'userCard' which will return an object that
      * defines how the card can be used.
      */
-    Rule cardRules = chosenCard.useCard();
+    Attribute cardAttribute = chosenCard.useCard();
     topCard = chosenCard;
     // Apply the defined rules to the current state of the game.
-    applyCardRulesToGameState(cardRules);
+    applyCardRulesToGameState(cardAttribute);
 
     // Move on to the next player by calling back to the gameloop.
     gameLoop();
@@ -187,20 +187,20 @@ public class GameManager {
    * Applies the card rules that was passed to the state of the game. Displays a
    * message describing the state of the game.
    */
-  private void applyCardRulesToGameState(Rule cardRules) {
+  private void applyCardRulesToGameState(Attribute cardAttribute) {
         /*changes the direction of the game if a flip direction card is played. Displays that the direction has been changed.*/
-        directionOfGame *= (cardRules.flipDirection)? -1: 1;
-        if(cardRules.flipDirection) {
+        directionOfGame *= (cardAttribute.flipDirection)? -1: 1;
+        if(cardAttribute.flipDirection) {
           interaction.display("Direction of the game has been flipped!");
         }
         //skips the next player if a skip player card is played. Displays a message, mentionning who's turn was skipped
-        if (cardRules.skipNextPlayer) {
+        if (cardAttribute.skipNextPlayer) {
             Player skippedPlayer = moveToNextPlayer();
             interaction.display(skippedPlayer.getName() + "'s turn is skipped");
         }
         
         //determines how many cards should be drawn based on the state of the game. Displays
-        nextPlayerDraws = cardRules.cardsToDraw;
+        nextPlayerDraws = cardAttribute.cardsToDraw;
         if(nextPlayerDraws > 0) {
             String prompt = String.format("Next player is picking-up %s cards!", nextPlayerDraws);
             interaction.display(prompt);

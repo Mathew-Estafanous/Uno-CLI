@@ -1,6 +1,6 @@
 package uno.cards;
 
-import uno.Rule;
+import uno.Attribute;
 
 /**
  * SwitchCard class defines how the SWITCH card is implemented within the 
@@ -20,8 +20,8 @@ public class SwitchCard extends Card {
      * @return Rule - Defined Switch Card
      */
     @Override
-    public Rule useCard() {
-        return new Rule.Builder()
+    public Attribute useCard() {
+        return new Attribute.Builder()
                 .flipDirectionOfGame()
                 .build();
     }

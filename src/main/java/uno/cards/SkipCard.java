@@ -1,6 +1,6 @@
 package uno.cards;
 
-import uno.Rule;
+import uno.Attribute;
 
 /**
  * SkipCard class defines how the SKIP card is implemented within the game,
@@ -19,8 +19,8 @@ public class SkipCard extends Card {
      * @return Rule - Defined skip two card
      */
     @Override
-    public Rule useCard() {
-        return new Rule.Builder()
+    public Attribute useCard() {
+        return new Attribute.Builder()
                 .shouldSkipPlayer()
                 .build();
     }

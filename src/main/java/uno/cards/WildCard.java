@@ -1,6 +1,6 @@
 package uno.cards;
 
-import uno.Rule;
+import uno.Attribute;
 
 /**
  * WildCard class defines how the WILD card is implemented within the game,
@@ -19,8 +19,8 @@ public class WildCard extends Card {
      * @return Rule - Defined the Wild Card
      */
     @Override
-    public Rule useCard() {
-        return new Rule.Builder()
+    public Attribute useCard() {
+        return new Attribute.Builder()
                 .build();
     }
 }

@@ -1,6 +1,6 @@
 package uno.cards;
 
-import uno.Rule;
+import uno.Attribute;
 
 /**
  * DrawTwoCard class defines how the DRAWTWO card is implemented within 
@@ -19,8 +19,8 @@ public class DrawTwoCard extends Card {
      * @return Rule - Defined draw two cards
      */
     @Override
-    public Rule useCard() {
-        return new Rule.Builder()
+    public Attribute useCard() {
+        return new Attribute.Builder()
                 .nextPlayerDraws(2)
                 .build();
     }
