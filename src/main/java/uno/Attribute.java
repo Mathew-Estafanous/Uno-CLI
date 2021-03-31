@@ -23,7 +23,7 @@ public class Attribute {
     }
 
     /**
-     * Rule Builder is used to create a well defined Rule object. It uses
+     * Attribute Builder is used to create a well defined Rule object. It uses
      * the builder pattern, where optional settings are given but not enforced.
      * Once complete, the build method will be called, which will "build" and
      * return a Attribute object with the chosen options.
