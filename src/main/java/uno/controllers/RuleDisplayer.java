@@ -1,4 +1,4 @@
-package uno;
+package uno.controllers;
 
 import uno.frontend.Interactions;
 

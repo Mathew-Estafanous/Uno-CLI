@@ -1,5 +1,6 @@
  package uno;
 
+import uno.controllers.Menu;
 import uno.frontend.CommandLineInteraction;
 import uno.frontend.Interactions;
 

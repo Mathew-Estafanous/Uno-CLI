@@ -1,7 +1,7 @@
 package uno.frontend;
 
 import uno.cards.Card;
-import uno.characters.Player;
+import uno.players.Player;
 
 import java.util.InputMismatchException;
 import java.util.List;

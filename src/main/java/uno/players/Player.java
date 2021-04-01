@@ -1,4 +1,4 @@
-package uno.characters;
+package uno.players;
 
 import uno.cards.Card;
 import uno.cards.CardColour;
@@ -32,6 +32,7 @@ public abstract class Player {
     /**
      * Takes in a list of cards that are then added to the player's
      * card hand.
+     *
      * @param cards - This list should not be null.
      */
     public void pickUpCards(List<Card> cards) {
@@ -57,14 +58,15 @@ public abstract class Player {
      * Takes in the chosen card and checks if the card can be played on top
      * of the top card. When 'true' is returned, the chosen card is valid
      * and can be played.
+     *
      * @param chosenCard - The card the player intends to use.
-     * @param topCard - The top card at the current point in the game.
+     * @param topCard    - The top card at the current point in the game.
      */
     protected boolean isValidCard(Card chosenCard, Card topCard) {
         CardType chosenType = chosenCard.getType();
         CardColour chosenColour = chosenCard.getColour();
         /* Check if card meets at least one of the rules. If it does, then
-        * return true. If none are met, then return false. */
+         * return true. If none are met, then return false. */
         return (chosenColour == topCard.getColour()) ||
                 (chosenType == topCard.getType()) ||
                 (chosenType == CardType.WILD) ||
@@ -75,7 +77,8 @@ public abstract class Player {
      * Modify a WildCard colour by taking in the card and the chosen number
      * of 0 to 3. Then alters the card colour to the associated colour:
      * GREEN: 0, RED: 1, YELLOW: 2, BLUE: 3
-     * @param card - The wild card that is being altered.
+     *
+     * @param card   - The wild card that is being altered.
      * @param choice - The number choice of 0 to 3.
      */
     protected void alterWildCardToColour(Card card, int choice) {
@@ -90,6 +93,7 @@ public abstract class Player {
      * This API is used to tell the player that they need to choose
      * a card from their hand and return their choice. Chosen cards
      * should also be removed from the player's hand.
+     *
      * @return Card - The chosen card by the player.
      */
     public abstract Card chooseCard(Card topCard);
