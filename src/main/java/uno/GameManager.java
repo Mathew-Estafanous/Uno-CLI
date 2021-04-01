@@ -51,7 +51,7 @@ public class GameManager {
   public void play() {
     /* prints out a message to start the game, creates players, and 
      * assigns them all cards */
-    interaction.display("WELCOME TO UNO");
+    interaction.display("==== WELCOME TO UNO ====");
     setupAllPlayers();
     assignPlayerStartingHands();
 
@@ -66,7 +66,7 @@ public class GameManager {
 
   // Creates all the players that will be participating in the game.
   private void setupAllPlayers() {
-    interaction.display("----------\nPLAYER SELECTION");
+    interaction.display("PLAYER SELECTION");
 
     // Prompt the user for the username that they would like to use.
     String playerName = interaction.chooseString("Choose a player name: ");
@@ -155,6 +155,8 @@ public class GameManager {
     if (player.isOutOfCards()) {
       // The player has won, so display that they won.
       interaction.playerWon(player);
+      //Resets the game in preparation for the possibility of another game.
+      resetGame();
       return;
     }
 
@@ -170,6 +172,7 @@ public class GameManager {
   }
 
   // Delays the thread for a period of time, then clears the screen.
+
   private void delayAndResetScreen() {
     // delays the screen for three seconds
     try {
@@ -181,11 +184,11 @@ public class GameManager {
     System.out.print("\033[H\033[2J");
     System.out.flush();
   }
-
   /*
    * Applies the card rules that was passed to the state of the game. Displays a
    * message describing the state of the game.
    */
+
   private void applyCardRulesToGameState(Attribute cardAttribute) {
         /*changes the direction of the game if a flip direction card is played. Displays that the direction has been changed.*/
         directionOfGame *= (cardAttribute.flipDirection)? -1: 1;
@@ -197,7 +200,7 @@ public class GameManager {
             Player skippedPlayer = moveToNextPlayer();
             interaction.display(skippedPlayer.getName() + "'s turn is skipped");
         }
-        
+
         //determines how many cards should be drawn based on the state of the game. Displays
         nextPlayerDraws = cardAttribute.cardsToDraw;
         if(nextPlayerDraws > 0) {
@@ -205,15 +208,15 @@ public class GameManager {
             interaction.display(prompt);
         }
     }
-
   /*
    * Moves to the next player depending on the current direction of the game. It
    * then returns that next player.
    */
+
   private Player moveToNextPlayer() {
     currentPlayer += directionOfGame;
 
-    /* Series of checks ensuring that current player index stays within the 
+    /* Series of checks ensuring that current player index stays within the
      * range of the list. */
     if (currentPlayer >= players.size())
       currentPlayer = 0;
@@ -221,5 +224,15 @@ public class GameManager {
       currentPlayer = players.size() - 1;
 
     return players.get(currentPlayer);
+  }
+
+  //Resets the game state back to the starting state.
+  private void resetGame() {
+    players.clear();
+    deck = new Deck();
+    //Set game state variables back to original values.
+    currentPlayer = -1;
+    nextPlayerDraws = 0;
+    directionOfGame = 1;
   }
 }

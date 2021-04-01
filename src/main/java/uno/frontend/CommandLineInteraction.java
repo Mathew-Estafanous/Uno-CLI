@@ -100,6 +100,8 @@ public class CommandLineInteraction implements Interactions {
                 "      ~-~~-~-~-~-~-~-~-~-~-~-~-~ ~-~~-~-~-~-~\n" +
                 "                        ~-~~-~-~-~-~";
         System.out.println(fireworks);
+        chooseString("Put in any key to continue: ");
+        System.out.println(RESET);
     }
 
     /**
