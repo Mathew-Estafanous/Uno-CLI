@@ -1,4 +1,4 @@
-======= RULES =======
+===== RULES =====
 Object of the Game:
 The first player to play all of the cards from their hand before their opponents wins the game!
 
@@ -29,4 +29,4 @@ The player always goes first, Match the top card on the discard pile either by n
 
 Going Out:
 The game ends when a player finishes their hand.
-==================
+==========

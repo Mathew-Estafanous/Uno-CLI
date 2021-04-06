@@ -23,8 +23,9 @@ public class Menu {
                     "2) Play a game of UNO \n" +
                     "3) Exit Application");
             choice = interaction.chooseInteger("Choose Option: ");
+            interaction.clear();
             switch (choice) {
-                case 1: ruleDisplay.displayRules(); break;
+                case 1: ruleDisplay.displayInfo(); break;
                 case 2: game.play(); break;
             }
         } while (choice != 3);

@@ -51,4 +51,9 @@ public interface Interactions {
      * @return String - The user's choice.
      */
     String chooseString(String prompt);
+
+    /**
+     * Will reset the front-end to a default state.
+     */
+    void clear();
 }

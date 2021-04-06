@@ -139,4 +139,11 @@ public class CommandLineInteraction implements Interactions {
         //Return the user string input.
         return input.nextLine();
     }
+
+    @Override
+    public void clear() {
+        // Clears the screen after the three seconds
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 }

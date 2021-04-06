@@ -180,9 +180,7 @@ public class GameManager {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // Clears the screen after the three seconds
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        interaction.clear();
     }
 
     /*

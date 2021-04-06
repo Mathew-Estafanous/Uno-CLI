@@ -1,8 +1,10 @@
 package uno.controllers;
 
+import uno.cards.*;
 import uno.frontend.Interactions;
 
 import java.io.*;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -16,10 +18,19 @@ public class RuleDisplayer {
     public RuleDisplayer(Interactions interactions) {
         this.interactions = interactions;
     }
-    
+
+    public void displayInfo() {
+        displayRules();
+        interactions.chooseString("Input any value to move on: ");
+        interactions.clear();
+        displayCards();
+        interactions.chooseString("Input any value to move on: ");
+        interactions.clear();
+    }
+
     /* Retrieves the rules from the resource folder and displays each
      * rule on a separate line. */
-    public void displayRules() {
+    private void displayRules() {
         InputStream inStream = retrieveRuleFile();
         //Check if the inputsteam is null
         if (inStream == null) return;
@@ -31,6 +42,27 @@ public class RuleDisplayer {
         }
         //Closes the scanner after all lines have been scanned
         scan.close();
+    }
+
+    /**
+     * Display several example cards and their associated names, so that the user
+     * knows what to expect when they are playing the game.
+     */
+    private void displayCards() {
+        interactions.display("=== EXAMPLE CARDS ===");
+        //Create a list of example cards to show.
+        List<Card> exampleCards = List.of(
+            new Card(CardColour.YELLOW, CardType.FIVE),
+            new DrawTwoCard(CardColour.RED),
+            new SkipCard(CardColour.BLUE),
+            new SwitchCard(CardColour.GREEN),
+            new WildCard(), new WildDrawFourCard()
+        );
+
+        //Iterate over the list and show the name and how it is expected to look.
+        exampleCards.forEach(card -> {
+            interactions.displayCard(card.toString().concat(": "), card);
+        });
     }
 
     /* Gets the 'rules.txt' file from the resources folder and opens
